@@ -26,4 +26,12 @@ class ShelfTest {
 
         assert(shelf.isEmpty())
     }
+
+    @Test
+    fun `isExpensive 테스트`() {
+        val shelf = Shelf()
+        shelf.add("[콜라,1000,0];[사이다,2000,0]")
+
+        assert(shelf.isExpensive(900))
+    }
 }

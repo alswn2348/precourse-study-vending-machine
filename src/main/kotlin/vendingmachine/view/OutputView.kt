@@ -14,4 +14,8 @@ class OutputView {
     fun printChange(returnMoney: String) {
 
     }
+
+    fun printBalance(money: Int) {
+        println("투입 금액: ${money}원")
+    }
 }

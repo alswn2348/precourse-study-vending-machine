@@ -14,6 +14,7 @@ class MachineController {
     fun run() {
         init()
         while (checkCanBuyMore()) {
+            view.balance(money)
             buy()
         }
 
@@ -23,8 +24,8 @@ class MachineController {
     private fun init() {
         changeMachine.setChange(generateChange())
         view.generatedCoin()
-        money = view.money()
         shelf.add(view.products())
+        money = view.money()
     }
 
     private fun generateChange(): List<Int> {
@@ -52,6 +53,6 @@ class MachineController {
     }
 
     private fun checkCanBuyMore(): Boolean {
-        return shelf.isEmpty() || !shelf.isExpensive(money)
+        return (!shelf.isEmpty() && !shelf.isExpensive(money))
     }
 }

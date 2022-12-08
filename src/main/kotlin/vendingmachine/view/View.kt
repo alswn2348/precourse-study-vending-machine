@@ -17,8 +17,17 @@ class View {
                 catchBlock = outputView::printError,
         )
     }
-    fun generatedCoin(){
 
+    fun generatedCoin() {
+
+    }
+
+    fun products(): String {
+        println(MESSAGE)
+        return repeatIfThrows(
+                tryBlock = inputView::readProducts,
+                catchBlock = outputView::printError,
+        )
     }
 
     fun money(): Int {
@@ -29,12 +38,8 @@ class View {
         )
     }
 
-    fun products():String{
-        println(MESSAGE)
-        return repeatIfThrows(
-                tryBlock = inputView::readProducts,
-                catchBlock = outputView::printError,
-        )
+    fun balance(money: Int) {
+        outputView.printBalance(money)
     }
 
     fun name(): String {
