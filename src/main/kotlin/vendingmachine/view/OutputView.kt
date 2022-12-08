@@ -7,8 +7,14 @@ class OutputView {
         println("$ERROR ${e.message}")
     }
 
-    fun printCoin() {
-
+    fun printCoin(coin: List<Int>) {
+        println(buildString {
+            appendLine("500원 - ${coin[0]}개")
+            appendLine("100원 - ${coin[1]}개")
+            appendLine("50원 - ${coin[2]}개")
+            appendLine("10원 - ${coin[3]}개")
+        }
+        )
     }
 
     fun printChange(returnMoney: String) {

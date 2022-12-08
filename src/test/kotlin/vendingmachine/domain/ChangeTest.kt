@@ -8,7 +8,7 @@ class ChangeTest {
     fun `changeTest`() {
          val changeMachine = ChangeMachine()
          changeMachine.money = 500
-         changeMachine.setChange(listOf(0, 4, 1, 1))
+         changeMachine.setChanges(listOf(0, 4, 1, 1))
          val result = listOf("잔돈", "100원 - 4개", "50원 - 1개")
          assertThat(result).contains(changeMachine.returnMoney())
     }

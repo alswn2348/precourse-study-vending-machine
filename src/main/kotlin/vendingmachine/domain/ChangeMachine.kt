@@ -2,10 +2,8 @@ package vendingmachine.domain
 
 class ChangeMachine {
     var money = 0
-    private var change = listOf<Int>()
-    fun setChange(change: List<Int>) {
-        this.change = change
-    }
+    var coins = listOf<Int>()
+
 
     fun returnMoney(): String {
         return ""

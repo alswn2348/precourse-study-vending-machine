@@ -9,7 +9,7 @@ class MachineController {
     private val shelf = Shelf()
     private val view = View()
     private val changeMachine = ChangeMachine()
-    private var money =0
+    private var money = 0
     private val randomCoinGenerator = RandomCoinGenerator()
     fun run() {
         init()
@@ -17,19 +17,18 @@ class MachineController {
             view.balance(money)
             buy()
         }
-
         view.change(changeMachine.returnMoney())
     }
 
     private fun init() {
-        changeMachine.setChange(generateChange())
-        view.generatedCoin()
+        changeMachine.coins = generateChange()
+        view.generatedCoin(changeMachine.coins)
         shelf.add(view.products())
         money = view.money()
     }
 
     private fun generateChange(): List<Int> {
-        val change = mutableListOf(0,0,0,0) // 500 , 100 , 50 , 10
+        val change = mutableListOf(0, 0, 0, 0) // 500 , 100 , 50 , 10
         var coin = view.coin()
         while (coin != 0) {
             val a = randomCoinGenerator.generate(coin)
@@ -45,14 +44,11 @@ class MachineController {
     }
 
 
-
     private fun buy() {
         val name = view.name()
         shelf.takeOut(name)
         money -= shelf.products[name]!![0]
     }
 
-    private fun checkCanBuyMore(): Boolean {
-        return (!shelf.isEmpty() && !shelf.isExpensive(money))
-    }
+    private fun checkCanBuyMore() = !shelf.isEmpty() && !shelf.isExpensive(money)
 }
