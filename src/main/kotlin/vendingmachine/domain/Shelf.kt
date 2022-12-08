@@ -13,8 +13,8 @@ class Shelf {
                     it.replace(Regex("\\[|\\]"), "")
                             .split(",")
                 }
-        a.forEach{
-            products[it[NAME]] = mutableListOf(it[PRIZE].toInt(),it[COUNT].toInt())
+        a.forEach {
+            products[it[NAME]] = mutableListOf(it[PRIZE].toInt(), it[COUNT].toInt())
         }
     }
 
@@ -23,7 +23,7 @@ class Shelf {
     }
 
     fun isEmpty() = products.all { it.value[1] == 0 }
-    fun isExpensive(money: Int) = products.all { it.value[0] > money}
+    fun isExpensive(money: Int) = products.all { it.value[0] > money }
 
 }
 

@@ -17,8 +17,14 @@ class OutputView {
         )
     }
 
-    fun printChange(returnMoney: String) {
-
+    fun printChange(returnCoins:  List<Int>) {
+        println(buildString {
+            appendLine("500원 - ${returnCoins[0]}개")
+            appendLine("100원 - ${returnCoins[1]}개")
+            appendLine("50원 - ${returnCoins[2]}개")
+            appendLine("10원 - ${returnCoins[3]}개")
+        }
+        )
     }
 
     fun printBalance(money: Int) {

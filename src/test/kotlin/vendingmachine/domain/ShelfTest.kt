@@ -19,6 +19,7 @@ class ShelfTest {
         shelf.takeOut("콜라")
         assertThat(shelf.products["콜라"]!![1]).isEqualTo(9)
     }
+
     @Test
     fun `isEmpty 테스트`() {
         val shelf = Shelf()

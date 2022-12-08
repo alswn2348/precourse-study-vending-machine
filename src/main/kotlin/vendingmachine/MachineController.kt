@@ -17,7 +17,8 @@ class MachineController {
             view.balance(money)
             buy()
         }
-        view.change(changeMachine.returnMoney())
+        view.balance(money)
+        view.change(changeMachine.returnMoney(money))
     }
 
     private fun init() {

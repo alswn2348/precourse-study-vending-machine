@@ -19,7 +19,7 @@ class View {
         )
     }
 
-    fun generatedCoin(coins : List<Int>) {
+    fun generatedCoin(coins: List<Int>) {
         println()
         println(MACHINE_HAVE_COIN_MESSAGE)
         outputView.printCoin(coins)
@@ -53,7 +53,7 @@ class View {
         )
     }
 
-    fun change(returnMoney: String) {
+    fun change(returnMoney: List<Int>) {
         println(CHANGE_MESSAGE)
         outputView.printChange(returnMoney)
     }
