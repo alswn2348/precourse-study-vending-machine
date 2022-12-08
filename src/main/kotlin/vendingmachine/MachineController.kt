@@ -1,5 +1,6 @@
 package vendingmachine
 
+import vendingmachine.domain.ChangeMachine
 import vendingmachine.domain.RandomCoinGenerator
 import vendingmachine.domain.Shelf
 import vendingmachine.view.View
@@ -7,20 +8,27 @@ import vendingmachine.view.View
 class MachineController {
     private val shelf = Shelf()
     private val view = View()
-    private val change = mutableListOf<Int>() // 500 , 100 , 50 , 10
-    private var money = view.money()
+    private val changeMachine = ChangeMachine()
+    private var money =0
     private val randomCoinGenerator = RandomCoinGenerator()
     fun run() {
-        generateCoin()
-        view.generatedCoin()
+        init()
         while (checkCanBuyMore()) {
             buy()
         }
-        changeCalculator()
-        view.change()
+
+        view.change(changeMachine.returnMoney())
     }
 
-    private fun generateCoin() {
+    private fun init() {
+        changeMachine.setChange(generateChange())
+        view.generatedCoin()
+        money = view.money()
+        shelf.add(view.products())
+    }
+
+    private fun generateChange(): List<Int> {
+        val change = mutableListOf(0,0,0,0) // 500 , 100 , 50 , 10
         var coin = view.coin()
         while (coin != 0) {
             val a = randomCoinGenerator.generate(coin)
@@ -32,11 +40,10 @@ class MachineController {
             }
             coin -= a
         }
+        return change
     }
 
-    private fun changeCalculator() {
 
-    }
 
     private fun buy() {
         val name = view.name()
@@ -45,6 +52,6 @@ class MachineController {
     }
 
     private fun checkCanBuyMore(): Boolean {
-        return shelf.isEmpty() || shelf.isExpensive(money)
+        return shelf.isEmpty() || !shelf.isExpensive(money)
     }
 }

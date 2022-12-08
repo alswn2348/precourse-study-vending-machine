@@ -11,7 +11,7 @@ class OutputView {
 
     }
 
-    fun printChange() {
+    fun printChange(returnMoney: String) {
 
     }
 }
