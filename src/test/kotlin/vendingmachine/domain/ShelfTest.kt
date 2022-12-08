@@ -22,7 +22,7 @@ class ShelfTest {
     @Test
     fun `isEmpty 테스트`() {
         val shelf = Shelf()
-        shelf.add("[콜라,1000,0]")
+        shelf.add("[콜라,1000,0];[사이다,2000,0]")
 
         assert(shelf.isEmpty())
     }

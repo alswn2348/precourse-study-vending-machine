@@ -23,6 +23,7 @@ class Shelf {
     }
 
     fun isEmpty() = products.all { it.value[1] == 0 }
+    fun isExpensive(coin: Int) = products.all {it.value[1] > coin}
 
 }
 
